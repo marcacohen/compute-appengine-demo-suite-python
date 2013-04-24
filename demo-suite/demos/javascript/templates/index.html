@@ -1,0 +1,84 @@
+{% extends "templates/base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/{{ demo_name }}/css/style.css">
+{% endblock %}
+
+{% block extra_javascript %}
+<script type="text/javascript">
+  var DEMO_NAME = '{{ demo_name }}';
+</script>
+<script type="text/javascript" src="/js/gce.js"></script>
+<script type="text/javascript" src="/js/squares.js"></script>
+<script type="text/javascript" src="/js/timer.js"></script>
+<script type="text/javascript" src="/js/counter.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="https://apis.google.com/js/client.js"></script>
+<script type="text/javascript" src="/{{ demo_name }}/js/script.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<h1>
+Google Compute Engine JavaScript Client Library Demo
+</h1>
+<p>
+  <a href="/{{ demo_name }}/project">Edit</a> your Compute Engine project
+  information.
+</p>
+
+<p> 
+  <!--Add a button for the user to click to initiate auth sequence -->
+  <button id="authorize-button" style="visibility: hidden">Authorize</button>
+</p>
+
+<label>Try a sample API call:</label><select id="api-selection-options">
+  <option value="null">
+    Please select an example API call from the dropdown menu
+  </option>
+  <option value="listInstances">
+    List Instances
+  </option>
+  <option value="listFirewalls">
+    List Firewalls
+  </option>
+  <option value="listMachineTypes">
+    List Machine Types
+  </option>
+  <option value="listNetworks">
+    List Networks
+  </option>
+  <option value="listGlobalOperations">
+    List Global Operations
+  </option>
+  <option value="listZoneOperations">
+    List Zone Operations
+  </option>
+  <option value="listOperationsWithFilter">
+    List Operations With A Filter
+  </option>
+  <option value="listZones">
+    List Zones
+  </option>
+  <option value="insertInstance">
+    Insert Instance
+  </option>
+  <option value="insertInstanceWithMetadata">
+    Insert Instance With Metadata
+  </option>
+  <option value="deleteInstance">
+    Delete Instance
+  </option>
+  <option value="deleteInstanceWithMetadata">
+    Delete Instance With Metadata
+  </option>
+  <option value="getInstance">
+    Get Instance
+  </option>
+  <option value="getInstanceWithMetadata">
+    Get Instance With Metadata
+  </option>
+</select>
+<div id="main-content">
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+handlers:
+- url: /cluster/css
+  static_dir: demos/cluster/static/css
+
+- url: /cluster/js
+  static_dir: demos/cluster/static/js
+
+- url: /cluster.*
+  script: demos.cluster.main.app

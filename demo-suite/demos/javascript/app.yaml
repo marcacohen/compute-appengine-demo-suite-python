@@ -1,0 +1,9 @@
+handlers:
+- url: /javascript/css
+  static_dir: demos/javascript/static/css
+
+- url: /javascript/js
+  static_dir: demos/javascript/static/js
+
+- url: /javascript.*
+  script: demos.javascript.main.app
