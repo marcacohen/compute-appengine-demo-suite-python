@@ -1,5 +1,5 @@
 application: gce-demos
-version: 1
+version: new
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -8,6 +8,8 @@ includes:
 - demos/fractal/app.yaml
 - demos/quick-start/app.yaml
 - demos/image-magick/app.yaml
+- demos/cluster/app.yaml
+- demos/javascript/app.yaml
 
 handlers:
 - url: /css
