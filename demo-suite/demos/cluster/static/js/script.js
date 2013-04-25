@@ -294,8 +294,7 @@ function listInstances() {
     'project': DEFAULT_PROJECT,
     'zone': DEFAULT_ZONE
   });
-  //executeRequest(request, 'listInstances');
-  request.execute(function(resp) { alert(resp); });
+  executeRequest(request, 'listInstances');
 }
 
 /**
@@ -488,7 +487,6 @@ function listZones() {
 function handleClientLoad() {
   gapi.client.setApiKey(apiKey);
   window.setTimeout(checkAuth, 1);
-  window.setTimeout(listInstances, 2);
 }
 
 /**
@@ -532,7 +530,33 @@ function handleAuthClick(event) {
  * Load the Google Compute Engine API.
  */
 function initializeApi() {
-  gapi.client.load('compute', API_VERSION);
+  gapi.client.load('compute', API_VERSION, inventoryCluster);
+}
+
+/**
+ *
+ */
+function basename(path) {
+    return path.replace(/\\/g,'/').replace( /.*\//, '' );
+}
+
+function inventoryCluster() {
+  var request = gapi.client.compute.instances.list({
+    'project': DEFAULT_PROJECT,
+    'zone': DEFAULT_ZONE
+  });
+  request.execute(function(resp) {
+    instances = resp['items'];
+    var node_list = [];
+    var name_list = [];
+    for (i in instances) {
+      name = instances[i]['name']
+      zone = basename(instances[i]['zone'])
+      name_list.push(name);
+      node_list.push({radius: 40, color: color(4), name: name});
+    }
+    set_nodes(node_list);
+  });
 }
 
 /**
@@ -540,6 +564,8 @@ function initializeApi() {
  */
 $(window)
   .bind('load', function() {
-    addSelectionSwitchingListeners();
+    //addSelectionSwitchingListeners();
     handleClientLoad();
 });
+
+

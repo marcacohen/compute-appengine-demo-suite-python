@@ -34,3 +34,20 @@ p {
 .project {
   width: 150px;
 }
+
+circle {
+  stroke: #fff;
+}
+
+svg {
+  font: 10px sans-serif;
+}
+
+rect {
+  fill: #ddd;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #fff;
+}
